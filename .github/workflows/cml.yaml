@@ -11,9 +11,8 @@ jobs:
       - name: cml_run
         env : 
           repo_token : ${{ secrets.GITHUB_TOKEN }}
-        run :
-          sudo apt-get update -y
-          sudo apt-get install -y python3
-          pip install -r requirements.txt
-          python train.py  
-          cat metrics.txt
+        run : sudo apt-get update -y
+              sudo apt-get install -y python3
+              pip install -r requirements.txt
+              python train.py  
+              cat metrics.txt
