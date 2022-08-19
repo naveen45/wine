@@ -1,0 +1,18 @@
+name: model-wine-quality
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    # optionally use a convenient Ubuntu LTS + DVC + CML image
+    #container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: iterative/setup-tools@v1 
+      - name: cml_run
+        env : 
+          repo_token : ${{ secrets.GITHUB_TOKEN }}
+        run : sudo apt-get update -y
+              sudo apt-get install -y python3
+              pip install -r requirements.txt
+              python train.py  
+              cat metrics.txt
